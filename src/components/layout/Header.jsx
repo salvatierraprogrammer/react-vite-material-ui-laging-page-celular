@@ -51,7 +51,7 @@ const Header = () => {
         textShadow: '0 0 6px #00ffcc',
       }}
     >
-      Reparación de Celular
+      Reparaciónes Foucault
     </Typography>
 
     {isMobile ? (

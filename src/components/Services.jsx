@@ -48,7 +48,7 @@ const servicesData = [
     ],
   },
   {
-    category: 'Microcomponente',
+    category: 'Mini componente',
     icon: <HeadsetMicIcon sx={{ color: '#00ffcc', fontSize: 40 }} />,
     tasks: [
       'Cambio de parlante (buzzer).',

@@ -20,24 +20,30 @@ const ProblemaSelectorModal = ({ value, onChange }) => {
 
   return (
     <>
-      <Button
-        fullWidth
-        variant="outlined"
-        onClick={() => setOpen(true)}
-        sx={{
-          mb: 2,
-          color: '#00ffcc',
-          borderColor: '#00ffcc',
-          borderRadius: 2,
-          fontWeight: 'bold',
-          '&:hover': {
-            backgroundColor: '#00ffcc11',
-            borderColor: '#00e6b8',
-          },
-        }}
-      >
-        {value || 'Seleccionar problema'}
-      </Button>
+   <Button
+  fullWidth
+  variant="outlined"
+  onClick={() => setOpen(true)}
+  sx={{
+    mb: 2,
+    color: value ? '#fff' : '#00ffcc',
+    borderColor: '#00ffcc',
+    borderRadius: 2,
+    fontWeight: 'bold',
+    textTransform: 'none',
+    textAlign: 'left',
+    justifyContent: 'flex-start',
+    '&:hover': {
+      backgroundColor: '#00ffcc11',
+      borderColor: '#00e6b8',
+    },
+  }}
+>
+  {value && value.trim().length > 0
+    ? value
+    : 'Seleccionar problema'}
+</Button>
+      
 
       <Modal open={open} onClose={() => setOpen(false)}>
         <Box

@@ -1,3 +1,4 @@
+// src/pages/Formulario.jsx
 import React, { useState } from 'react';
 import {
   Box,
@@ -10,12 +11,12 @@ import {
 } from '@mui/material';
 
 import { modelosPorMarca } from '../data/modelosPorMarca';
-import { problemasComunes } from '../data/problemasComunes.jsx';
-import {menuProps} from '../styles/menuProps.jsx';
-import ProblemaSelectorModal from './ProblemaSelectorModal.jsx';
+import { menuProps } from '../styles/menuProps.jsx';
+import ProblemaSelectorModal from '../components/ProblemaSelectorModal.jsx';
+
 const marcas = Object.keys(modelosPorMarca);
 
-const ContactForm = () => {
+const Formulario = () => {
   const theme = useTheme();
   const isXs = useMediaQuery(theme.breakpoints.down('sm'));
 
@@ -24,7 +25,7 @@ const ContactForm = () => {
   const [modeloPersonalizado, setModeloPersonalizado] = useState('');
   const [usarModeloPersonalizado, setUsarModeloPersonalizado] = useState(false);
   const [problemaSeleccionado, setProblemaSeleccionado] = useState('');
-  
+
   const [nombre, setNombre] = useState('');
   const [telefono, setTelefono] = useState('');
   const [detalleProblema, setDetalleProblema] = useState('');
@@ -48,7 +49,6 @@ const ContactForm = () => {
     }
   };
 
-  // Valida que todos los campos requeridos estén completos
   const validarCampos = () => {
     const modeloFinal = usarModeloPersonalizado ? modeloPersonalizado.trim() : modeloSeleccionado;
     return (
@@ -60,26 +60,27 @@ const ContactForm = () => {
       detalleProblema.trim()
     );
   };
-const crearMensaje = () => {
-  const modeloFinal = usarModeloPersonalizado ? modeloPersonalizado.trim() : modeloSeleccionado;
-  return `📋 *Reporte de problema*\n\n` +
-         `🏷️ *Marca:* ${marcaSeleccionada}\n` +
-         `📱 *Modelo:* ${modeloFinal}\n` +
-         `🛠️ *Problema:* ${problemaSeleccionado}\n` +
-         `🧾 *Detalle:* ${detalleProblema}\n` +
-         `🙋‍♂️ *Nombre:* ${nombre}\n` +
-         `📲 *Teléfono:* ${telefono}`;
-};
 
-const enviarWhatsapp = () => {
-  if (!validarCampos()) {
-    alert('Por favor completa todos los campos antes de enviar.');
-    return;
-  }
-  const mensaje = encodeURIComponent(crearMensaje());
-  const numeroWhatsapp = '5491131034391';
-  window.open(`https://api.whatsapp.com/send?phone=${numeroWhatsapp}&text=${mensaje}`, '_blank');
-};
+  const crearMensaje = () => {
+    const modeloFinal = usarModeloPersonalizado ? modeloPersonalizado.trim() : modeloSeleccionado;
+    return `📋 *Reporte de problema*\n\n` +
+      `🏷️ *Marca:* ${marcaSeleccionada}\n` +
+      `📱 *Modelo:* ${modeloFinal}\n` +
+      `🛠️ *Problema:* ${problemaSeleccionado}\n` +
+      `🧾 *Detalle:* ${detalleProblema}\n` +
+      `🙋‍♂️ *Nombre:* ${nombre}\n` +
+      `📲 *Teléfono:* ${telefono}`;
+  };
+
+  const enviarWhatsapp = () => {
+    if (!validarCampos()) {
+      alert('Por favor completa todos los campos antes de enviar.');
+      return;
+    }
+    const mensaje = encodeURIComponent(crearMensaje());
+    const numeroWhatsapp = '5491131034391';
+    window.open(`https://api.whatsapp.com/send?phone=${numeroWhatsapp}&text=${mensaje}`, '_blank');
+  };
 
   const enviarEmail = () => {
     if (!validarCampos()) {
@@ -88,14 +89,12 @@ const enviarWhatsapp = () => {
     }
     const asunto = encodeURIComponent('Reporte de problema técnico');
     const cuerpo = encodeURIComponent(crearMensaje());
-    // Cambia este email por el tuyo o el destinatario real
     const emailDestino = 'tucorreo@ejemplo.com';
     window.location.href = `mailto:${emailDestino}?subject=${asunto}&body=${cuerpo}`;
   };
 
   return (
     <Box
-      id="contacto"
       sx={{
         maxWidth: { xs: '95%', sm: 600 },
         mx: 'auto',
@@ -124,10 +123,9 @@ const enviarWhatsapp = () => {
         Envia tu problema
       </Typography>
 
-      <form noValidate autoComplete="off" onSubmit={e => e.preventDefault()}>
+      <form noValidate autoComplete="off" onSubmit={(e) => e.preventDefault()}>
         {/* Marca */}
         <TextField
-          id="marca"
           label="Marca"
           select
           required
@@ -158,7 +156,6 @@ const enviarWhatsapp = () => {
         {/* Modelo */}
         {!usarModeloPersonalizado ? (
           <TextField
-            id="modelo"
             label="Modelo"
             select
             required
@@ -198,7 +195,6 @@ const enviarWhatsapp = () => {
           </TextField>
         ) : (
           <TextField
-            id="modeloPersonalizado"
             label="Ingresar modelo"
             required
             fullWidth
@@ -208,7 +204,6 @@ const enviarWhatsapp = () => {
             variant="outlined"
             InputProps={{ style: { color: '#fff', backgroundColor: '#1a1a1a', borderRadius: 8 } }}
             InputLabelProps={{ style: { color: '#888' } }}
-            SelectProps={{ MenuProps: menuProps }}
             sx={{
               mb: 2,
               '& .MuiOutlinedInput-root': {
@@ -221,16 +216,14 @@ const enviarWhatsapp = () => {
         )}
 
         {/* Problema */}
-    <ProblemaSelectorModal
-  value={problemaSeleccionado}
-  onChange={setProblemaSeleccionado}
-/>
+        <ProblemaSelectorModal
+          value={problemaSeleccionado}
+          onChange={setProblemaSeleccionado}
+        />
 
-        {/* Otros campos */}
+        {/* Nombre */}
         <TextField
-          id="nombre"
           label="Nombre completo"
-          type="text"
           required
           fullWidth
           margin="normal"
@@ -248,10 +241,10 @@ const enviarWhatsapp = () => {
             },
           }}
         />
+
+        {/* Teléfono */}
         <TextField
-          id="telefono"
           label="Teléfono"
-          type="text"
           required
           fullWidth
           margin="normal"
@@ -269,10 +262,10 @@ const enviarWhatsapp = () => {
             },
           }}
         />
+
+        {/* Detalle del problema */}
         <TextField
-          id="detalleProblema"
           label="Detalle del problema"
-          type="text"
           required
           fullWidth
           margin="normal"
@@ -293,6 +286,7 @@ const enviarWhatsapp = () => {
           }}
         />
 
+        {/* Botones */}
         <Box
           textAlign="center"
           mt={4}
@@ -352,4 +346,4 @@ const enviarWhatsapp = () => {
   );
 };
 
-export default ContactForm;
+export default Formulario;
