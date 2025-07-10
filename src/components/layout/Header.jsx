@@ -15,7 +15,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import PhoneIphoneIcon from '@mui/icons-material/PhoneIphone';
 import BuildIcon from '@mui/icons-material/Build';
 import { Link } from 'react-router-dom';
-import logoreparacionfoucault from '../../assets/logoreparacionfoucault.png'
+import logocolor from '../../assets/logocolor.png'
 
 const Header = () => {
   const theme = useTheme();
@@ -60,11 +60,11 @@ const Header = () => {
         >
           <Box
             component="img"
-            src={logoreparacionfoucault}
+            src={logocolor}
             alt="Logo Foucault"
             sx={{
-              height: 50,
-              width: 50,
+              height: 90,
+              width: 100,
               objectFit: 'contain',
             }}
           />
