@@ -89,7 +89,7 @@ const enviarWhatsapp = () => {
     const asunto = encodeURIComponent('Reporte de problema técnico');
     const cuerpo = encodeURIComponent(crearMensaje());
     // Cambia este email por el tuyo o el destinatario real
-    const emailDestino = 'tucorreo@ejemplo.com';
+    const emailDestino = 'salvatierradev@gmail.com';
     window.location.href = `mailto:${emailDestino}?subject=${asunto}&body=${cuerpo}`;
   };
 
