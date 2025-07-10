@@ -1,0 +1,15 @@
+export const problemasComunes = [
+  { emoji: '🔧', texto: 'Cambio de módulo' },
+  { emoji: '🔌', texto: 'No enciende' },
+  { emoji: '🔋', texto: 'Batería que no dura' },
+  { emoji: '⚡', texto: 'No carga' },
+  { emoji: '🎤', texto: 'Problemas con el micrófono' },
+  { emoji: '🔈', texto: 'No se escucha' },
+  { emoji: '📷', texto: 'Cámara no funciona' },
+  { emoji: '🎛️', texto: 'Botones no responden' },
+  { emoji: '🖥️', texto: 'Software pegado o se queda en el logo' },
+  { emoji: '📶', texto: 'Conexión Wi-Fi fallando' },
+  { emoji: '🖱️', texto: 'Pantalla táctil no responde' },
+  { emoji: '🔥', texto: 'Sobrecalentamiento' },
+  { emoji: '❓', texto: 'Otros' },
+];
