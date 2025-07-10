@@ -76,7 +76,7 @@ const servicesData = [
     ],
   },
   {
-    category: 'Otros trabajos',
+    category: 'Otros ',
     icon: <SettingsApplicationsIcon sx={{ color: '#00ffcc', fontSize: 40 }} />,
     tasks: [
       'Cambio de flex de carga (cuando no está soldado).',
