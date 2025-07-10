@@ -130,8 +130,8 @@ const Services = () => {
       >
         Servicios
       </Typography>
-<Grid container spacing={3} justifyContent="center" alignItems="center">
 
+<Grid container spacing={2} justifyContent="center" alignItems="center">
   {servicesData.map((service, index) => (
     <Grid
       item
@@ -147,8 +147,9 @@ const Services = () => {
       <Paper
         elevation={3}
         sx={{
-          width: '90%',    // Menos ancho para caber mejor
-          maxWidth: 280,  // Max ancho menor
+          width: '100%',
+    maxWidth: 230,
+           // Max ancho menor
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
