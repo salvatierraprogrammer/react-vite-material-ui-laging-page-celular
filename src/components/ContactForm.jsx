@@ -77,7 +77,7 @@ const enviarWhatsapp = () => {
     return;
   }
   const mensaje = encodeURIComponent(crearMensaje());
-  const numeroWhatsapp = '5491131034391';
+  const numeroWhatsapp = '+5491162589112';
   window.open(`https://api.whatsapp.com/send?phone=${numeroWhatsapp}&text=${mensaje}`, '_blank');
 };
 
@@ -89,7 +89,7 @@ const enviarWhatsapp = () => {
     const asunto = encodeURIComponent('Reporte de problema técnico');
     const cuerpo = encodeURIComponent(crearMensaje());
     // Cambia este email por el tuyo o el destinatario real
-    const emailDestino = 'salvatierradev@gmail.com';
+    const emailDestino = 'tecnicofoucault@gmail.com';
     window.location.href = `mailto:${emailDestino}?subject=${asunto}&body=${cuerpo}`;
   };
 
